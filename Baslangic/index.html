@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Ascendia – Rise Beyond Limits. Awaken Your Higher Self with our revolutionary app designed for growth tracking, community goals, and visual level-ups.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ascendia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(to bottom, #0d0d1f, #1a1a2e);
+      color: #f5f5f5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Sticky Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10,10,26,0.9);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a:hover {
+      color: #29b6f6;
+    }
+
+    /* Hero Section with Video Background */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    #bgVideo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+    }
+    .cta-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: #ffffff10;
+      border: 1px solid #ffffff40;
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background: #ffffff30;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 4rem 2rem;
+      background: #121222;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .features ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .features li {
+      background: #1f1f3a;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    /* Testimonials */
+    .testimonials .testimonial {
+      margin-bottom: 2rem;
+      background: #1f1f3a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .testimonials cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    /* Blog Posts */
+    .blog-post {
+      background: #1f1f3a;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .blog-post a {
+      color: #f5f5f5;
+      font-weight: bold;
+    }
+    .blog-post a:hover {
+      color: #ffffff;
+    }
+
+    /* Interactive Progress Tracker */
+    .progress-bar {
+      width: 80%;
+      height: 10px;
+      background: #444;
+      border-radius: 5px;
+      margin: 1rem auto;
+    }
+    .progress-bar-filled {
+      height: 100%;
+      background: #29b6f6;
+      border-radius: 5px;
+    }
+
+    .next-level {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #29b6f6;
+      font-weight: bold;
+    }
+
+    /* Newsletter Form */
+    .newsletter input {
+      padding: 1rem;
+      width: 60%;
+      border: 1px solid #ffffff40;
+      border-radius: 10px;
+      background: #1f1f3a;
+      color: #f5f5f5;
+      margin-right: 1rem;
+    }
+    .newsletter button {
+      padding: 1rem 2rem;
+      background: #29b6f6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .newsletter button:hover {
+      background: #0288d1;
+    }
+
+    /* FAQ Section */
+    .faq .faq-item {
+      background: #1f1f3a;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+    .faq h3 {
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    .faq p {
+      display: none;
+      padding-top: 0.5rem;
+      margin: 0;
+    }
+    .faq .faq-item.active p {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0a0a1a;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    .store-buttons, .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .store-buttons img, .social-links img {
+      height: 50px;
+      transition: transform 0.2s ease;
+    }
+    .store-buttons img:hover, .social-links a:hover {
+      transform: scale(1.05);
+      color: #29b6f6;
+    }
+
+    /* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 0.8rem 1rem;
+      background: #29b6f6;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1001;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <header>
+    <div class="logo"><a href="#">Ascendia</a></div>
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#blog">Blog</a>
+      <a href="#progress">Progress</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Video Background -->
+  <section class="hero" id="hero">
+    <!-- Video Background using Solo Leveling scene -->
+    <video id="bgVideo" autoplay muted loop>
+      <source src="https://example.com/solo-leveling-sung-jinwoo-fight.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>Ascendia</h1>
+      <p>Rise Beyond Limits. Awaken Your Higher Self.</p>
+      <a href="#features" class="cta-button">Join the Ascension</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2>What Ascendia Offers</h2>
+    <ul>
+      <li>✨ Ethereal Growth Tracking</li>
+      <li>🔥 Visual Level-Ups & Auras</li>
+      <li>🌌 Community Ascension Goals</li>
+      <li>📈 Reflective Progress Feedback</li>
+    </ul>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Users Are Saying</h2>
+    <div class="testimonial">
+      <p>"Ascendia has completely transformed the way I track my personal growth. It's motivating and fun!"</p>
+      <cite>- Jane Doe, Enthusiast</cite>
+    </div>
+    <div class="testimonial">
+      <p>"The level-up visuals are incredible! It's like gamifying self-improvement!"</p>
+      <cite>- John Smith, User</cite>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog" id="blog">
+    <h2>Latest Articles</h2>
+    <div class="blog-post">
+      <h3>5 Ways to Track Your Personal Growth</h3>
+      <p>Learn how to use Ascendia to monitor your self-improvement journey...</p>
+      <a href="#">Read More</a>
+    </div>
+  </section>
+
+  <!-- Interactive Progress Tracker -->
+  <section class="progress-container" id="progress">
+    <h2>Your Progress</h2>
+    <div class="progress-bar">
+      <div class="progress-bar-filled" style="width: 70%;"></div>
+    </div>
+    <p>You're on the right track! Keep moving forward!</p>
+    <div class="next-level">
+      <p>Next level in: <span id="levelPercentage">30%</span></p> 
+    </div>
+  </section>
+
+  <!-- Newsletter Sign-Up -->
+  <section class="newsletter" id="newsletter">
+    <h2>Stay Updated!</h2>
+    <p>Sign up for our newsletter to receive the latest updates and offers.</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit" class="cta-button">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is Ascendia?</h3>
+      <p>Ascendia is an innovative app designed to help you track your personal growth, achieve visual level-ups, and connect with a community of like-minded individuals.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I get started?</h3>
+      <p>Simply download the app from the App Store or Google Play and sign up to begin your journey toward a higher self.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a premium version?</h3>
+      <p>Yes, Ascendia offers both free and premium plans with additional features for an enhanced experience.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="store-buttons">
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29_SVG.svg" alt="App Store" loading="lazy">
+      </a>
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" loading="lazy">
+      </a>
+    </div>
+    <div class="social-links">
+      <a href="#" target="_blank">Facebook</a>
+      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="_blank">Instagram</a>
+    </div>
+    &copy; 2025 Ascendia. All rights reserved.
+  </footer>
+
+  <!-- Back-to-Top Button -->
+  <button id="backToTop">&#8679;</button>
+
+  <script>
+    // Scroll-to-Section Animation
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    // Progress Bar Update on Page Load
+    window.addEventListener('load', () => {
+      const progressBar = document.querySelector('.progress-bar-filled');
+      const nextLevelPercentage = document.getElementById('levelPercentage');
+      const currentProgress = 70; // Current progress level
+      const nextLevel = 100; // The next level
+      const remainingPercentage = nextLevel - currentProgress;
+
+      // Update the progress bar and level percentage
+      progressBar.style.width = `${currentProgress}%`;
+      nextLevelPercentage.textContent = `${remainingPercentage}%`;
+    });
+
+    // FAQ Item Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Back-to-Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
